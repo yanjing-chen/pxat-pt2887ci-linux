@@ -1,0 +1,12 @@
+# PXAT / PixelAuth PT2887-CI fingerprint module (USB 2f0a:1055)
+#
+# fprintd itself runs as root and does not need this rule. It exists so that
+# the standalone probe (dist/pxat_probe) can be run by the logged-in user
+# without sudo. TAG+="uaccess" grants access to the active seat; the
+# MODE/GROUP lines are a fallback for non-logind setups.
+#
+# Only the exact PID of this machine is matched on purpose: the same vendor
+# ships several modules with different firmwares, and a broad wildcard could
+# give unintended access to unrelated devices.
+
+SUBSYSTEM=="usb", ATTR{idVendor}=="2f0a", ATTR{idProduct}=="1055", MODE="0660", GROUP="plugdev", TAG+="uaccess"

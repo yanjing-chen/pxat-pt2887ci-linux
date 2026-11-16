@@ -1,0 +1,5 @@
+# Build intermediates (dist/ prebuilt binaries are committed on purpose,
+# so users can install without a toolchain)
+*.o
+*.so.bak.*
+*.bak.*
